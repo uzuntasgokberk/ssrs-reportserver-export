@@ -58,12 +58,12 @@ export\
 
 | Requirement | Details |
 |---|---|
-| Report server | **SSRS 2017 or later**, or **Power BI Report Server** (both have the REST API v2.0). Tested with SSRS 2019. Power BI Report Server has not been tested yet |
+| Report server | **SSRS 2017 or later**, or **Power BI Report Server** (both have the REST API v2.0). Tested with SSRS 2019 and Power BI Report Server 1.26 |
 | PowerShell | Windows PowerShell 5.1 or PowerShell 7+ |
 | Permissions | The **Content Manager** or **Publisher** role on the items you export. The **Browser** role can view reports but cannot download their files; with it you get HTTP 403 |
 | Sign-in | The current Windows account by default, or `-Credential` |
 
-Tested on Windows with PowerShell 5.1 and 7, signed in with the current Windows account. `-Credential`, Linux and macOS have not been tested yet.
+Tested on Windows with PowerShell 5.1 and 7, signed in with the current Windows account. Signing in with `-Credential` (only a rejected sign-in was tested), Linux and macOS have not been tested yet.
 
 ## Quick start
 
@@ -91,7 +91,7 @@ or start it with `powershell.exe -ExecutionPolicy Bypass -File .\Export-SsrsCont
 | Parameter | Description | Default |
 |---|---|---|
 | `-ServerUrl` | Web portal address, e.g. `http://reportserver/Reports` | Required |
-| `-Folder` | Only these server folders, subfolders included. Folder name or path; wildcards allowed | All |
+| `-Folder` | Only these server folders, subfolders included. Folder name or path; wildcards allowed. A folder name without `/` matches at any depth | All |
 | `-Name` | Only items with these names (wildcards allowed) | All |
 | `-Exclude` | Skip items **or folders** with these names (wildcards allowed). A folder name without `/` matches at any depth | None |
 | `-Type` | `Report`, `DataSource`, `DataSet`, `ReportPart`, `PowerBIReport` (one or more). SSRS has no Power BI reports, so there `PowerBIReport` finds nothing | All |
@@ -166,7 +166,7 @@ Each log line shows:
 
 | Message | Cause | Fix |
 |---|---|---|
-| `HTTP 401` | The report server did not accept the account | Check the network / VPN. From a machine outside the domain, pass `-Credential` |
+| `HTTP 401` | The report server did not accept the account | Check the network / VPN. From a machine outside the domain, pass `-Credential`; with `-Credential`, check the user name (`DOMAIN\user`) and the password |
 | `HTTP 403` | No permission on the item | Ask for the Content Manager or Publisher role on that folder |
 | `HTTP 404` on the connection test | Wrong `-ServerUrl`, or the server is older than SSRS 2017 (no REST API v2.0) | Use the web portal address from the browser |
 | `Network error` | The report server could not be reached | Each request is tried 3 times, 15 s apart; check the network / VPN |
