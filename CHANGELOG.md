@@ -3,6 +3,17 @@
 All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Changed
+
+- With `-Credential`, an HTTP 401 now hints at the user name and password instead of suggesting to pass `-Credential`.
+- Tested with Power BI Report Server 1.26 (reports, shared data sources and datasets, Power BI reports).
+
+### Documentation
+
+- `-Folder`: a folder name without `/` matches at any depth, the same as with `-Exclude`.
+
 ## [1.0.0] - 2026-11-02
 
 ### Added

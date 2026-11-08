@@ -34,7 +34,8 @@
 
 .PARAMETER Folder
     Only export items in these server folders, subfolders included. Folder name or path;
-    wildcards are allowed, e.g. "Finance", "Finance/Monthly", "Sales*".
+    wildcards are allowed, e.g. "Finance", "Finance/Monthly", "Sales*". A folder name without "/"
+    matches at any depth, e.g. "Finance" also selects "/Archive/Finance".
 
 .PARAMETER Name
     Only export items with these names. Wildcards are allowed, e.g. "Invoice*".
@@ -235,7 +236,10 @@ function Save-ItemFile([string]$Path, [byte[]]$Bytes) {
 
 function Get-HttpHint([int]$StatusCode) {
     switch ($StatusCode) {
-        401 { return "Authentication failed: the report server does not accept the account (check the network / VPN, or pass -Credential)." }
+        401 {
+            if ($Credential) { return "Authentication failed: the report server does not accept the account given with -Credential (check the user name, e.g. DOMAIN\user, and the password)." }
+            return "Authentication failed: the report server does not accept the account (check the network / VPN, or pass -Credential)."
+        }
         403 { return "Access denied: downloading a definition needs the 'Content Manager' or 'Publisher' role on this item ('Browser' is not enough)." }
         404 { return "Not found: the item may have been deleted or moved, or -ServerUrl is wrong. The REST API v2.0 needs SSRS 2017 or later, or Power BI Report Server." }
     }
