@@ -1,0 +1,26 @@
+# .gitignore for a repository that stores the output of Export-SsrsContent.ps1.
+# Copy this file to the root of your export folder.
+
+# Export logs (one log and CSV per run; the CSV contains the user names of stored credentials).
+_logs/
+
+# Never commit report server database backups or the encryption key backup.
+*.bak
+*.trn
+*.snk
+
+# Secrets
+.env
+.env.*
+*.pfx
+*.pem
+*.key
+
+# Power BI reports (.pbix, Power BI Report Server only) are binary and can contain imported data.
+# Uncomment the next line to keep them out of Git, or track them with Git LFS (see the README).
+# *.pbix
+
+# OS files
+Thumbs.db
+desktop.ini
+.DS_Store

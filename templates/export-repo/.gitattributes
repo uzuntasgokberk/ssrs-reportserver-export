@@ -1,0 +1,19 @@
+# .gitattributes for a repository that stores the output of Export-SsrsContent.ps1.
+# Copy this file to the root of your export folder.
+
+# Line endings: Git stores text with LF and checks the report files out with CRLF.
+# Report Builder and Visual Studio save CRLF, while a report server returns whatever was
+# uploaded; with these rules a diff shows only real changes, never whole files whose line
+# endings changed.
+* text=auto
+
+*.rdl text eol=crlf
+*.rds text eol=crlf
+*.rsd text eol=crlf
+*.rsc text eol=crlf
+
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.pbix binary
