@@ -242,7 +242,7 @@ Keep database and key backups out of Git, in a secured location. Keep the key pa
 
 ## Contributing
 
-Issues and pull requests are welcome. Please run the checks from [`.github/workflows/validate.yml`](.github/workflows/validate.yml) before opening a pull request: the parse check with PowerShell 5.1 and 7, and PSScriptAnalyzer with `PSScriptAnalyzerSettings.psd1`. When reporting a bug, include the relevant lines from the log file. Remove server, folder or item names you don't want to share.
+Issues are welcome; pull requests are by invitation. [CONTRIBUTING.md](CONTRIBUTING.md) describes the process and the checks to run. When reporting a bug, include the relevant lines from the log file and remove server, folder or item names you don't want to share. Report security problems privately, never in an issue: [SECURITY.md](SECURITY.md).
 
 ## License
 
