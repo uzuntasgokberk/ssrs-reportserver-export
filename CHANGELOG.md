@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Documentation
 
 - `-Folder`: a folder name without `/` matches at any depth, the same as with `-Exclude`.
+- `SECURITY.md`: how to report a vulnerability privately. `CONTRIBUTING.md`: issues first, pull requests by invitation, and the checks to run.
 
 ## [1.0.0] - 2026-11-02
 
