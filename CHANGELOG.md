@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-11-09
+
 ### Changed
 
 - With `-Credential`, an HTTP 401 now hints at the user name and password instead of suggesting to pass `-Credential`.
@@ -14,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - `-Folder`: a folder name without `/` matches at any depth, the same as with `-Exclude`.
 - `SECURITY.md`: how to report a vulnerability privately. `CONTRIBUTING.md`: issues first, pull requests by invitation, and the checks to run.
+- README: the script can be downloaded from the latest release and checked with its SHA256.
 
 ## [1.0.0] - 2026-11-02
 

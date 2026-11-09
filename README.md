@@ -75,13 +75,15 @@ cd ssrs-reportserver-export
 .\Export-SsrsContent.ps1 -ServerUrl "http://reportserver/Reports"          # export to .\export
 ```
 
+Instead of cloning, you can download `Export-SsrsContent.ps1` from the [latest release](https://github.com/uzuntasgokberk/ssrs-reportserver-export/releases/latest) and compare `Get-FileHash .\Export-SsrsContent.ps1` with the SHA256 in the release notes. A release is a version tested against a report server; `main` has the newest changes.
+
 Use the web portal address you see in the browser. A URL copied from the browser (`.../Reports/browse/`), the web service address (`.../ReportServer`) or just the host also work.
 
 If PowerShell refuses to run the script ("running scripts is disabled on this system"), you do not need an administrator window. Allow local scripts once for your user:
 
 ```powershell
 Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
-Unblock-File .\Export-SsrsContent.ps1      # only needed if the file was downloaded as a ZIP
+Unblock-File .\Export-SsrsContent.ps1      # only needed if the file was downloaded in a browser (release or ZIP)
 ```
 
 or start it with `powershell.exe -ExecutionPolicy Bypass -File .\Export-SsrsContent.ps1 ...`.
